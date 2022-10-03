@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Building a Shared Component Library in Lit / Live Demo</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap" rel="stylesheet">
+    <style>
+      body {
+        margin: 10px;
+        font-family: Roboto Mono, monospace;
+      }
+      playground-ide {
+        --playground-code-font-family: Roboto Mono, monospace;
+        --playground-code-background: #1e1e1e;
+        --playground-code-default-color: #d4d4d4;
+        --playground-code-keyword-color: #c586c0;
+        --playground-code-atom-color: #d4d4d4;
+        --playground-code-number-color: #b5cea8;
+        --playground-code-def-color: #9cdcfe;
+        --playground-code-variable-color: #dcdcaa;
+        --playground-code-property-color: #9cdcfe;
+        --playground-code-operator-color: #808080;
+        --playground-code-variable-2-color: #d4d4d4;
+        --playground-code-variable-3-color: #d4d4d4;
+        --playground-code-type-color: #569cd6;
+        --playground-code-comment-color: #d4d4d4;
+        --playground-code-string-color: #ce9178;
+        --playground-code-string-2-color: #d4d4d4;
+        --playground-code-meta-color: #569cd6;
+        --playground-code-qualifier-color: #d4d4d4;
+        --playground-code-builtin-color: #d4d4d4;
+        --playground-code-tag-color: #d4d4d4;
+        --playground-code-attribute-color: #d4d4d4;
+        --playground-code-callee-color: #dcdcaa;
+        --playground-code-tag-color: #569cd6;
+
+        height: calc(99vh - 20px);
+      }
+
+      playground-ide::part(editor) {
+        flex: 1 1 50%;
+      }
+    </style>
+  </head>
+  <body>
+    <playground-ide line-numbers line-wrapping resizable>
+      <script type="sample/html" filename="index.html">
+<!doctype html>
+<html>
+  <head>
+    <script type="module" src="index.js">&lt;/script>
+  </head>
+  <body>
+    <my-element greet="World"></my-element>
+  </body>
+</html>
+      </script>
+
+      <script type="sample/ts" filename="index.ts">
+import {LitElement, html} from 'lit';
+import {property, customElement} from 'lit/decorators.js';
+
+@customElement('my-element')
+export class MyElement extends LitElement {
+  @property()
+  greet = 'nobody';
+
+  override render() {
+    return html`<p>Hello <b>${this.greet}</b>!</p>`;
+  }
+}
+      </script>
+    </playground-ide>
+    <script type="module" src="/node_modules/playground-elements/playground-ide.js"></script>
+  </body>
+</html>

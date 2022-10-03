@@ -1,0 +1,17 @@
+Building a Shared Component Library in Lit:
+- whoami
+- how do you end up w/ multiple frameworks:
+  - acquisitions
+  - multiple teams building multiple chunks w/ multiple opinions
+- why not material-X:
+  - variant of chart from alex
+- what is lit:
+  - continuation of polymer
+  - standards compliant web-components
+- features of lit:
+  - @property vs @state
+  - rendering
+  - event listeners
+  - composition
+- lets build a thing:
+  - ???
