@@ -1,3 +1,41 @@
+:root {
+  --playground-code-font-family: Roboto Mono, monospace;
+  --playground-code-background: #1e1e1e;
+  --playground-code-default-color: #d4d4d4;
+  --playground-code-keyword-color: #c586c0;
+  --playground-code-atom-color: #d4d4d4;
+  --playground-code-number-color: #b5cea8;
+  --playground-code-def-color: #9cdcfe;
+  --playground-code-variable-color: #dcdcaa;
+  --playground-code-property-color: #9cdcfe;
+  --playground-code-operator-color: #808080;
+  --playground-code-variable-2-color: #d4d4d4;
+  --playground-code-variable-3-color: #d4d4d4;
+  --playground-code-type-color: #569cd6;
+  --playground-code-comment-color: #d4d4d4;
+  --playground-code-string-color: #ce9178;
+  --playground-code-string-2-color: #d4d4d4;
+  --playground-code-meta-color: #569cd6;
+  --playground-code-qualifier-color: #d4d4d4;
+  --playground-code-builtin-color: #d4d4d4;
+  --playground-code-attribute-color: #d4d4d4;
+  --playground-code-callee-color: #dcdcaa;
+  --playground-code-tag-color: #569cd6;
+  --playground-code-linenumber-color: var(--playground-code-default-color);
+  --playground-code-selection-background: #569cd688;
+
+  --playground-preview-width: 50%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto Mono, monospace;
+}
+
+playground-ide {
+  height: calc(100vh - 5px);
+}
+
 img.logo {
   height: 30vh;
   width: 35vh;
