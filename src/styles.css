@@ -52,3 +52,15 @@ img.logo {
 .seventy-percent {
   height: 70vh;
 }
+
+.thirty-percent-w {
+  width: 30vw;
+}
+
+.fifty-percent-w {
+  width: 50vw;
+}
+
+.sevent-percent-w {
+  width: 70vw;
+}

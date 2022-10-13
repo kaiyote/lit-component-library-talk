@@ -1,8 +1,5 @@
 Building a Shared Component Library in Lit:
 - whoami
-- how do you end up w/ multiple frameworks:
-  - acquisitions
-  - multiple teams building multiple chunks w/ multiple opinions
 - why not material-X:
   - variant of chart from alex
 - what is lit:
@@ -13,5 +10,10 @@ Building a Shared Component Library in Lit:
   - rendering
   - event listeners
   - composition
+- accessibility:
+  - labels & the shadow boundary
+  - events
+  - keyboard focus
 - lets build a thing:
   - ???
+  - maybe the Most Accessible Component Ever??? The codemash-marquee
