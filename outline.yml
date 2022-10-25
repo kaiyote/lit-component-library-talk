@@ -1,19 +1,20 @@
 Building a Shared Component Library in Lit:
 - whoami
-- why not material-X:
-  - variant of chart from alex
-- what is lit:
+- lit overview:
   - continuation of polymer
   - standards compliant web-components
-- features of lit:
-  - @property vs @state
-  - rendering
-  - event listeners
-  - composition
-- accessibility:
+  - features of lit:
+    - @property vs @state
+    - rendering
+    - event listeners
+    - composition
+- accessibility of web-components:
   - labels & the shadow boundary
   - events
   - keyboard focus
+  - forms
+- why not material-X:
+  - pinpoint specific differences across frameworks
 - lets build a thing:
   - ???
   - maybe the Most Accessible Component Ever??? The codemash-marquee

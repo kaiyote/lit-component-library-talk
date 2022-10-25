@@ -41,6 +41,10 @@ img.logo {
   width: 35vh;
 }
 
+li > img {
+  vertical-align: middle;
+}
+
 .thirty-percent {
   height: 30vh;
 }
