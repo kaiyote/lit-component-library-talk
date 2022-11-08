@@ -5,25 +5,35 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Building a Shared Component Library in Lit</title>
-    <link rel="stylesheet" href="/src/styles.css" />
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css" />
+    <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
     <div class="reveal">
       <div class="slides">
-        <section data-markdown="/slides/00-title.md"></section>
-        <section data-markdown="/slides/01-whoami.md"></section>
+        <section>
+          <h1>Building a Shared Component Library in Lit</h1>
+          <img src="/logo.svg#flame" alt="lit logo" class="logo" />
+        </section>
+        <section>
+          <h1>So, who am I?</h1>
+          <img src="/tim.webp" alt="There are some who call me... Tim." class="fifty-percent" />
+          <p class="fragment">Fellow Engineer at Fuse</p>
+          <p class="fragment">Really into Javascript and Javascript Accessories</p>
+          <p class="fragment">Internet Recluse</p>
+        </section>
         <section data-markdown="/slides/02-enter-lit.md"></section>
         <section>
-          <section data-markdown="/slides/03-material-inconsistencies/00-just-button.md"></section>
-          <section data-markdown="/slides/03-material-inconsistencies/01-react.md"></section>
-          <section data-markdown="/slides/03-material-inconsistencies/02-angular.md"></section>
-          <section data-markdown="/slides/03-material-inconsistencies/03-vue.md"></section>
-          <section data-markdown="/slides/03-material-inconsistencies/04-more-inconsistencies.md"></section>
+          <section data-markdown="/slides/03-lit-features/00-reactive-state.md"></section>
+          <section data-markdown="/slides/03-lit-features/01-events.md"></section>
+          <section data-markdown="/slides/03-lit-features/02-composition.md"></section>
         </section>
-        <section data-markdown="/slides/04-lit-features.md"></section>
-        <section data-markdown="/slides/05-accessibility-concerns.md"></section>
+        <section>
+          <section data-markdown="/slides/04-accessibility/00-labels-and-shadow.md"></section>
+          <section data-markdown="/slides/04-accessibility/01-focus.md"></section>
+          <section data-markdown="/slides/04-accessibility/02-forms.md"></section>
+        </section>
         <section>
           <a href='demo/'>Demo Time!</a>
         </section>
