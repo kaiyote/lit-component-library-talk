@@ -12,3 +12,9 @@ Lit also defines some "directives" that can help w/ repetition/render performanc
 - `ifDefined` - only render this attribute at all if the value of the argument is defined
 
 There are also `ref`'s and memoization available.
+
+Notes:
+- `repeat(listOfItems, () => keyFun, () => html``)`
+- `choose(something, [['array', of], ['tuples', and], ['render', functions]], () => defaultCase)`
+- `when(booleanExpression, () => trueFun, () => optionalFalseFun)`
+- `attr=${ifDefined(prop)}`

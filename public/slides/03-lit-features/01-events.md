@@ -2,13 +2,17 @@
 
 Properties down, Events up.
 
-Aka, transmit data down to child components via properties, child components communicate back up to their parents via events.
+Aka, transmit data down to child components via properties, child components communicate back up to their parents via events. <!-- .element class="fragment" -->
 
-A couple of things to watch for with events in the land of web-components however:
+`<tag-with-event @event-name=${handlerFunc}></tag-with-event>` <!-- .element class="fragment" -->
 
-- `composed: true` in the event init options to make an event bubble out of the shadow dom it was dispatched in
-- This can be useful for keeping "internal" events truly internal, just dont set `composed: true`
-- `this.dispatchEvent(new CustomEvent('child-did-a-thing', { detail: something, composed: true }))`
+A couple of things to watch for with events in the land of web-components however: <!-- .element class="fragment" -->
+
+<ul>
+<li class="fragment"><code>composed: true</code> in the event init options to make an event bubble out of the shadow dom it was dispatched in </li>
+<li class="fragment">This can be useful for keeping "internal" events truly internal, just dont set <code>composed: true</code></li>
+<li class="fragment"><code>this.dispatchEvent(new CustomEvent('child-did-a-thing', { detail: something, composed: true }))</code></li>
+</ul>
 
 Notes:
 - Under most circumstances, anything that needs to be transmitted to a child should be done via its defined reactive properties

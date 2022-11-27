@@ -68,3 +68,9 @@ li > img {
 .sevent-percent-w {
   width: 70vw;
 }
+
+.reveal code {
+  color: var(--playground-code-variable-color);
+  border: 1px solid white;
+  width: auto;
+}
