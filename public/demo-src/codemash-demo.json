@@ -1,8 +1,10 @@
 {
   "files": {
-    "index.html": {},
-    "index.ts": {
+    "index.html": {
       "selected": true
-    }
+    },
+    "step-0.ts": {},
+    "step-1.ts": {},
+    "step-2.ts": {}
   }
 }

@@ -1,7 +1,48 @@
-<!-- playground-hide -->
 <head>
   <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
-  <script type="module" src="index.js"></script>
+  <script type="module" src="step-0.js"></script>
 </head>
-<!-- playground-hide-end -->
-<codemash-demo greet="World"></codemash-demo>
+<style>
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap, 1rem);
+    max-width: fit-content;
+  }
+
+  .marquee__content {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: space-around;
+    min-width: 100%;
+    gap: var(--gap, 1rem);
+    animation: scroll 5s linear infinite;
+  }
+
+  @keyframes scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(calc(-100% - var(--gap, 1rem)));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee__content {
+      animation-play-state: paused !important;
+    }
+  }
+</style>
+<div class="marquee">
+  <span class="marquee__content">
+    Hello, CodeMash!
+  </span>
+  <span class="marquee__content" aria-hidden="true">
+    Hello, CodeMash!
+  </span>
+</div>
+<codemash-marquee>
+  <span>Hello, CodeMash!</span>
+</codemash-marquee>
