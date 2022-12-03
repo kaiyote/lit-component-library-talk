@@ -35,10 +35,36 @@
         <section>
           <h1>The Nightmare Scenario</h1>
           <img src="/images/the-nightmare.svg" alt="The Basic Structure" />
+          <aside class="notes">
+            <p>
+              In the distant past, the original dev team made the, I'll call it questionable, decision to
+              write the entire application as a monolithic ColdFusion application, complete with 90% of the
+              business logic embedded into the database.
+            </p>
+            <p>
+              In the less distant past, a new dev team was brought in, and started using the new-and-shiny-at-the-time
+              front-end framework of Ember 3.0 to rebuild the user experience. They also built their own microservices
+              to talk to, but that is unimportant to this talk.
+            </p>
+            <p>
+              Then, corporate bought another product, that dev team likes React, so they start building their chunk of
+              the app in React. It doesn't interact with the ember portion, so its "fine".
+            </p>
+            <p>
+              History repeats itself, and new teams are acquired, each with their own existing front-end preferences,
+              and so everything just gets stitched together from various single-page applications.
+            </p>
+            <p>
+              You can get all of the pages to mostly look the same with some global CSS and some gentle guidance, but when
+              it comes to user interactions with more complex controls, it starts to break down. I can tell you from experience
+              that even things as simple as the speed of the ripple in a material button differs across the various implementations.
+            </p>
+          </aside>
         </section>
         <section data-markdown="/slides/02-enter-lit.md"></section>
         <section>
           <section data-markdown="/slides/03-lit-features/00-reactive-state.md"></section>
+          <section data-markdown="/slides/03-lit-features/00.1-reactive-state-continued.md"></section>
           <section data-markdown="/slides/03-lit-features/01-events.md"></section>
           <section data-markdown="/slides/03-lit-features/02-composition.md"></section>
         </section>

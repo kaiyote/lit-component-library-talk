@@ -74,3 +74,9 @@ li > img {
   border: 1px solid white;
   width: auto;
 }
+
+html.print-pdf,
+html.print-pdf body,
+html.print-pdf .reveal .speaker-notes-pdf[data-layout=separate-page] {
+  background: none 0% 0% / auto repeat scroll padding-box border-box rgb(25, 25, 25)
+}

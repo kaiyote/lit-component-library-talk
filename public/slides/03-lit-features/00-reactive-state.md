@@ -1,26 +1,10 @@
 ## Reactive State
 
-<div class='r-stack'>
-
-<div class='fragment fade-out' data-fragment-index='0'>
-
 `@property` - Exactly what it sounds like. Identical to `props` in React, Angular, Vue
   - sets up watchers for both attribute and object property versions of the `@property`
     - `<my-tag prop=""></my-tag>` or `myTag.prop = whatever`
   - has conversion support for the basic JS types (String, Boolean, Number, Object, Array) for things passed in as attributes
   - you can write your own custom converter if you're feeling fancy
-
-</div>
-
-<div class='fragment' data-fragment-index='0'>
-
-`@state` - Internal component state. Triggers a re-render on change just like `@property` does
-  - generates custom getters and setters which make `this.prop = newValue` trigger a rerender automatically
-  - doesn't need "dirty checking"
-
-</div>
-
-</div>
 
 Note:
 - You just decorate each class property that you want exposed as a property with this decorator.
