@@ -75,8 +75,21 @@ li > img {
   width: auto;
 }
 
-html.print-pdf,
-html.print-pdf body,
-html.print-pdf .reveal .speaker-notes-pdf[data-layout=separate-page] {
-  background: none 0% 0% / auto repeat scroll padding-box border-box rgb(25, 25, 25)
+.print-pdf .reveal-viewport,
+.print-pdf .reveal-viewport .pdf-page,
+.print-pdf .reveal-viewport .speaker-notes-pdf,
+.print-pdf .reveal-viewport .speaker-notes-pdf:before,
+.print-pdf .reveal-viewport .pdf-page h1,
+.print-pdf .reveal-viewport .pdf-page h2,
+.print-pdf .reveal-viewport .pdf-page h3,
+.print-pdf .reveal-viewport .pdf-page h4,
+.print-pdf .reveal-viewport .pdf-page h5,
+.print-pdf .reveal-viewport .pdf-page h6 {
+  background: #fff !important;
+  color: #000 !important;
+  opacity: 1;
+}
+
+.print-pdf .reveal code {
+  color: #333 !important;
 }

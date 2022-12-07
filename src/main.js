@@ -7,7 +7,7 @@ const deck = new Reveal({
   height: 1080,
   plugins: [Notes, Markdown],
   hash: true,
-  totalTime: 25 * 60,
+  totalTime: 50 * 60,
   pdfSeparateFragments: false,
   showNotes: window.location.search.includes('print-pdf') ? 'separate-page' : false
 })
