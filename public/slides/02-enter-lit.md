@@ -5,6 +5,7 @@
 - Use them in any framework* <!-- .element class="fragment" -->
 - Tiny bundle <!-- .element class="fragment" -->
 - Scoped styles <!-- .element class="fragment" -->
+- Progressive Enhancement <!-- .element class="fragment" -->
 
 Note:
 - At Google I/O 2018, Google announced that LitElement would be the replacement for the PolymerElement base class from
@@ -25,3 +26,4 @@ general are already pretty small already, so you end up with impressively small 
 leak out, and styles from the host application can't leak in (except for fonts and css custom properties). What this
 really means is your component will look exactly as its supposed to look in all circumstances, no matter what the host
 application is doing style-wise.
+- You can add lit and any component built with it to any page, as drop in replacements for existing framework components.
