@@ -7,6 +7,7 @@
     <title>Building a Shared Component Library in Lit</title>
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/a11y-dark.min.css" />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
   <body>
@@ -19,11 +20,23 @@
         <section data-timing="60">
           <h1>What is this talk?</h1>
           <ul>
-            <li>The Scenario that led me down this path</li>
-            <li>How Lit solves a lot of the problems inherent in The Scenario</li>
+            <li>What drove me to Lit</li>
+            <li>How Lit makes the solution so much better</li>
             <li>Lets Build A Thing™ In Lit</li>
             <li>Who Actually Uses Lit in Production Right Now</li>
           </ul>
+        </section>
+        <section data-timing="30">
+          <img src="/images/spiderman.jpeg" alt="the spiderman pointing at another spiderman meme, one labeled 'burton smiths codemash 2023 web component pre-compiler', the other labeled 'this talk'" />
+          <aside class="notes">
+            So, if any of you went to the Web Components pre compiler on Teusday morning, you might get the slightest
+            hint of deja-vu from this talk. In the wildest stroke of unintentional luck, it turns out Burton stole my
+            entire talk and padded it out to 4 hours (and expertly done at that).
+
+            Jokes aside, I'm not kidding that this talk is basically a highly compressed version of that pre-compiler.
+            There are a couple differences/new things here, but if you want to leave now, you'll only hurt my feelings
+            a little bit.
+          </aside>
         </section>
         <section data-timing="60">
           <h2>So, who am I?</h2>
@@ -32,44 +45,229 @@
           <p class="fragment">Really into Javascript and Javascript Accessories</p>
           <img src="/images/neat.jpeg" alt="I just think it's neat." class="thirty-percent fragment" />
         </section>
-        <section>
-          <h1>The Nightmare Scenario</h1>
+        <section data-timing="300">
+          <h1>The Why</h1>
           <img src="/images/the-nightmare.svg" alt="The Basic Structure" />
           <aside class="notes">
             <p>
-              In the distant past, the original dev team made the, let's call it questionable, decision to
-              write the entire application as a monolithic ColdFusion application, complete with 90% of the
-              business logic embedded into the database.
+              So, the product I work on at Fuse was originally written in ColdFusion. Just one big monolith, 90% of the
+              business logic in the database, the whole 9 yards. The people who built it were solid developers, but they
+              were decidedly not front end devs, and so the css in particular suffered for it.
             </p>
             <p>
-              In the less distant past, a new dev team was brought in, and started using the new-and-shiny-at-the-time
-              front-end framework of Ember 3.0 to rebuild the user experience. They also built their own microservices
-              to talk to, but that is unimportant to this talk.
+              Then, still before my time, new devs joined, old devs left, it was decided they should start modernizing
+              the front end, they chose Ember for the task, and they got to it. Replaced most of the external facing pages
+              wrote their own shiny new CSS, and everything was great.
             </p>
             <p>
-              Then, corporate bought another product, that dev team likes React, so they start building their chunk of
-              the app in React. It doesn't interact with the ember portion, so its "fine".
+              But same old same old, teams shifted, etc, etc, the new devs decided that React was the new hotness. They
+              modernized a few of the remaining external pages that'd been left in CF, and even started in on the older
+              ember pages. Complete with their own, even shinier and newer CSS, and everything was awesome.
             </p>
             <p>
-              History repeats itself, and new teams are acquired, each with their own existing front-end preferences,
-              and so everything just gets stitched together from various single-page applications.
+              At the same time, another team in a more sectioned off part of the app decided they wanted to use Angular
+              to start modernizing their peice. And so they did. With their own shiny new CSS. All built in the aim of
+              adhering to the style guide granted to us from on high.
             </p>
             <p>
-              You can get all of the pages to mostly look the same with some global CSS and some gentle guidance, but when
-              it comes to user interactions with more complex controls, it starts to break down. I can tell you from experience
-              that even things as simple as the speed of the ripple in a material button differs across the various implementations.
+              New teams, new devs, etc, etc, now Vue is the new hotness. Complete with those devs opinions on how best to
+              implement the style guide, complete with the newest and shiniest CSS. You can see where this is going.
+            </p>
+            <p>
+              Now, the real fun part is that our styleguide is Material-ish. Its close enough that you can almost get away
+              with using whatever material library for your framework, but you will inevitably have to tweak something. This
+              leads to multiple teams using multiple material libraries, each having to tweak them in unique ways, and not
+              tweaking them consistently with each other, such that you'd end up in an uncanny valley situation as you went
+              between pages that used different frameworks, where certain things would like *almost* the same, and function
+              *almost* the same, but they'd be off in vague and unsettling ways.
+            </p>
+            <p>
+              Now, there was a component library developed by an in house team, and written in Angular. Obviously, that
+              doesn't help the non-Angular product teams, so they also compiled those components using Angular Elements.
+              Works great, except. Now you're shipping Angular + that pages main framework. And there's angular-isms in
+              Angular that don't actually translate well, or at all, in to Angular Elements. There were actually 3
+              of the original Angular components that just never made the jump to Angular Elements, and there were a handful
+              more that worked, but only in the most simple cases.
+            </p>
+            <p>
+              Eventually, that component library fell to me to maintain, and I eventually just got tired of dealing w/ Angular
+              and went hunting for something else that would consistently work across all of our frameworks, and I landed on
+              web components.
             </p>
           </aside>
         </section>
-        <section data-markdown="/slides/02-enter-lit.md"></section>
         <section>
-          <section data-timing="15">
-            <h1>Lit Features</h1>
-          </section>
-          <section data-markdown="/slides/03-lit-features/00-reactive-state.md"></section>
-          <section data-markdown="/slides/03-lit-features/00.1-reactive-state-continued.md"></section>
-          <section data-markdown="/slides/03-lit-features/01-events.md"></section>
-          <section data-markdown="/slides/03-lit-features/02-composition.md"></section>
+          <h1>So why Web Components?</h1>
+          <ul>
+            <li>Web Standard since HTML5</li>
+            <li class="fragment">Use them in any framework</li>
+            <li class="fragment">Shadow DOM</li>
+            <li class="fragment">Progressive Enhancement</li>
+          </ul>
+          <aside class="notes">
+            <p>
+              Web components have been a thing for almost a decade now. All current browsers support them.
+              You could even run them in IE11 thanks to polyfills, but now that Microsoft is ended
+              support for IE11 we don't even have to worry about that.
+            </p>
+            <p>
+              They work in any framework. Merely load the JS and use the tags and you're good to go.
+              Now.. there are some caveats to the actual useability in certain frameworks. In Vue, you
+              need to tell the compiler that any tag matching a pattern is a web-component and it should
+              treat them as such. It'll still do it, but it'll warn you in dev mode that its assuming this
+              is what you meant. Angular needs you to setup the custom elements schema in the module where
+              you're rendering them. React is another story. Basic attributes work, but event binding is a mess,
+              and so are any complex attributes/properties. There are wrappers around to wrap any web component
+              in a way that React can use them "like native", tho, and support for just being able to use them
+              *should* be landing in React 19, so things are looking up there.
+            </p>
+            <p>
+              The Shadow DOM makes it so that your styles and html are encapsulated from the host document.
+              No more fighting styles (mostly), no more important wars. Your component will look exactly as
+              you intended on every page, no matter what css the host has loaded. There are of course ways to
+              enable styling of internals of your web components, but those methods now become part of the API
+              of your component, and must be fairly explicitly coded to in order to affect the styling.
+            </p>
+            <p>
+              You can just rewrite a single control into a web-component, load its javascript on the page,
+              and replace the existing legacy control. You don't have to whole-sale rip your app apart to be
+              able to make use of web components.
+            </p>
+          </aside>
+        </section>
+        <section>
+          <h1>So why lit?</h1>
+          <ul>
+            <li>The replacement for Polymer</li>
+            <li class="fragment">Builds standards complaint web-components</li>
+            <li class="fragment">Tiny Bundle</li>
+          </ul>
+          <aside class="notes">
+            <p>
+              At Google I/O 2018, Google announced that LitElement would be the replacement for the
+              PolymerElement base class from polymer.
+            </p>
+            <p>
+              LitElement extends from HtmlElement and just adds a few niceties. This means you are just writing
+              straight web-components, with a few extra features thrown in to handle reactive state and
+              declarative rendering.
+            </p>
+            <p>
+              The entirety of Lit is only 5kb minified and gzipped, so it adds basically nothing to your bundle. Lit components in
+              general are already pretty small already, so you end up with impressively small bundles.
+            </p>
+            <p>
+              The shared library I'm building at Fuse has somewhere around 15 different components, and the entire bundle is only
+              50kb minified and gzipped, and the majority of that is styles.
+            </p>
+          </aside>
+        </section>
+        <section data-timing="300">
+          <h1>A comparison</h1>
+          <div style="display: flex; margin-bottom: 2rem;" class="r-stretch comparison">
+            <pre style="width: 50%;"><code data-trim data-no-escape contenteditable>
+              <template id="template">
+                <style>
+                  .message {
+                    font-size: var(--hello-world-size, 5rem);
+                    color: var(--hello-world-color, blue);
+                  }
+                </style>
+                <span class="message"></span>
+                <button class="count-button"></button>
+              </template>
+              <script type="text/javascript">
+                class HelloWorldComponent extends HTMLElement {
+                  // in order to respond to changes to the name attribute
+                  static observedAttributes = ['name']
+
+                  // internal state
+                  count = 0
+
+                  constructor () {
+                    super()
+
+                    // clone the template
+                    const content =
+                      document.getElementById('template').content.cloneNode(true)
+
+                    // set the message content
+                    content.querySelector('.message').textContent =
+                      `Hello, ${this.getAttribute('name') ?? 'World'}`
+
+                    // set the button content
+                    const button = content.querySelector('.count-button')
+                    button.textContent =
+                      `This button has been clicked ${this.count} times`
+                    // attach the event listener to the button
+                    button.addEventListener('click', this.click.bind(this))
+
+                    // attach a shadow
+                    const shadow = this.attachShadow({ mode: 'open' })
+
+                    // attach the content
+                    shadow.appendChild(content)
+                  }
+
+                  click () {
+                    this.count += 1
+                    this.shadowRoot.querySelector('.count-button').textContent =
+                      `This button has been clicked ${this.count} times`
+                  }
+
+                  attributeChangedCallback (name, oldValue, newValue) {
+                    // manually update the message text when name changes
+                    this.shadowRoot.querySelector('.message').textContent =
+                      `Hello, ${newValue}`
+                  }
+                }
+
+                // register the component
+                window.customElements.define('hello-world', HelloWorldComponent)
+              </script>
+            </code></pre>
+            <pre><code data-trim data-no-escape class="language-javascript" contenteditable>
+              // register the component
+              @customElement('hello-world')
+              class HelloWorldComponent extends LitElement {
+                // styles
+                static styles = css`
+                  .message {
+                    font-size: var(--hello-world-size, 5rem);
+                    color: var(--hello-world-color, blue);
+                  }
+                `
+
+                // wire up an attribute called `name` and default it to `World`
+                @property() name = 'World'
+
+                // internal state
+                @state() private count = 0
+
+                // the content of the element
+                // will automatically rerender when name or count change
+                render () {
+                  return html`
+                    <span class="message">Hello, ${this.name}</span>
+                    <button class="count-button" @click=${this.click}>
+                      This button has been clicked ${this.count} times!
+                    </button>
+                  `
+                }
+
+                // handle the button click
+                click () { this.count += 1 }
+              }
+            </code></pre>
+          </div>
+          <aside class="notes">
+            <ul>
+              <li>element registration</li>
+              <li>styling & shared stylesheets</li>
+              <li>rendering</li>
+              <li>attribute/state handling & re-rendering</li>
+            </ul>
+          </aside>
         </section>
         <section>
           <section data-timing="15">
