@@ -1,5 +1,6 @@
 import { LitElement, html, css } from 'lit'
-import { customElement, queryAssignedNodes } from 'lit/decorators.js'
+import { customElement, property, queryAssignedNodes } from 'lit/decorators.js'
+import { classMap } from 'lit/directives/class-map.js'
 import { map } from 'lit/directives/map.js'
 import { unsafeHTML } from 'lit/directives/unsafe-html.js'
 
@@ -7,7 +8,7 @@ import { unsafeHTML } from 'lit/directives/unsafe-html.js'
 export class CodeMashMarquee extends LitElement {
   static styles = css`
     :host {
-      font-family: var(--demo-font-family, Roboto, sans serif);
+      font-family: var(--demo-font-family, inherit);
       display: flex;
       overflow: hidden;
       user-select: none;

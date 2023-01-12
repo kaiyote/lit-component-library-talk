@@ -5,8 +5,11 @@
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Building a Shared Component Library in Lit</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="/node_modules/reveal.js/dist/reveal.css" />
-    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/black.css" />
+    <link rel="stylesheet" href="/node_modules/reveal.js/dist/theme/sky.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.7.0/build/styles/a11y-dark.min.css" />
     <link rel="stylesheet" href="/src/styles.css" />
   </head>
@@ -188,8 +191,10 @@
                     super()
 
                     // clone the template
-                    const content =
-                      document.getElementById('template').content.cloneNode(true)
+                    const content = document
+                      .getElementById('template')
+                      .content
+                      .cloneNode(true)
 
                     // set the message content
                     content.querySelector('.message').textContent =
@@ -199,6 +204,7 @@
                     const button = content.querySelector('.count-button')
                     button.textContent =
                       `This button has been clicked ${this.count} times`
+
                     // attach the event listener to the button
                     button.addEventListener('click', this.click.bind(this))
 
@@ -242,10 +248,10 @@
                 @property() name = 'World'
 
                 // internal state
-                @state() private count = 0
+                @state() count = 0
 
                 // the content of the element
-                // will automatically rerender when name or count change
+                // will automatically re-render when name or count change
                 render () {
                   return html`
                     <span class="message">Hello, ${this.name}</span>

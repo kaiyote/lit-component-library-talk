@@ -1,5 +1,5 @@
 :root {
-  --playground-code-font-family: Roboto Mono, monospace;
+  --playground-code-font-family: Fira Code, monospace;
   --playground-code-background: #1e1e1e;
   --playground-code-default-color: #d4d4d4;
   --playground-code-keyword-color: #c586c0;
@@ -25,11 +25,13 @@
   --playground-code-selection-background: #569cd688;
 
   --playground-preview-width: 50%;
+
+  --r-code-font: Fira Code;
 }
 
 body {
   margin: 0;
-  font-family: Roboto Mono, monospace;
+  font-family: Fira Code, monospace;
 }
 
 playground-ide {
@@ -70,9 +72,7 @@ li > img {
 }
 
 .reveal code {
-  color: var(--playground-code-variable-color);
   border: 1px solid white;
-  width: auto;
 }
 
 .print-pdf .reveal-viewport,
